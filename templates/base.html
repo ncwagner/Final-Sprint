@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <title>Calorie Tracker</title>
+
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+        <!--Navigation Bar Brand-->
+        <a class="navbar-brand" href="#"><img src="{% static "images/logo.JPG" %}" alt="Logo" width="155" height="115"/></a>
+
+
+      <div class="w3-bar w3-border w3-light-grey">
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link waves-effect waves-light" href="{% url 'Home'%}">Home
+                  <span class="sr-only">(current)</span>
+              </a>
+             </li>
+              <li class="nav-item">
+                <a class="nav-link waves-effect waves-light" href="{% url 'Features'%}">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link waves-effect waves-light" href="{% url 'About'%}">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Calorie Tracker
+                </a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item waves-effect waves-light" href="#">Input Meals</a>
+                  <a class="dropdown-item waves-effect waves-light" href="#">Recipes</a>
+                  <a class="dropdown-item waves-effect waves-light" href="#">Calorie Calculator</a>
+                </div>
+              </li>
+         </ul>
+
+        <form class="form-inline">
+          <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          </div>
+        </form>
+      </div>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        {% if user.is_authenticated %}
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link dropdown-toggle" href="#" id="userMenu" \
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ user.username }}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right"
+              aria-labelledby="userMenu">
+                <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}">
+                Log Out</a>
+              </div>
+            </li>
+          </ul>
+        {% else %}
+          <form class="form-inline ml-auto">
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary">
+            Log In</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary ml-2">
+            Sign up</a>
+            <a href="{% url 'password_reset' %}" class="btn btn-primary ml-2">
+            Password Reset</a>
+          </form>
+        {% endif %}
+      </div>
+    </nav>
+
+</head>
+<body>
+    <p align = "left"><h1>Track Calories - Meal Prep - Find Workouts</h1></p>
+    <p> </p>
+    <p>Calorie Tracker allows you to track all your calories, find delicious and nutritious recipes for meal prep, and find workouts to help you stay active.</p>
+
+    <body1></body1>
+    <footer></footer>
+    <h2>Main Features & Benefits</h2>
+    <p></p>
+    <p>This app allows you to stay on top of your health. Our meal prep recipes are nutritious, delicious and have their calories include for easier tracking. Our workouts also include approximate calories burnt and the following:</p>
+
+    <img src="{% static "images/green checkmark.JPG" %}" alt="Logo" width="70" height="65" style="display: inline-list-item"/>
+        <p1>Track Calories - Calorie Tracker allows you to keep track of your daily calorie intake.</p1>
+
+    <img src="{% static "images/green checkmark.JPG" %}" alt="Logo" width="70" height="65" style="display: inline-list-item"/>
+        <p2>Meal Prep - Our meal prep provides healthy recipes to our users.</p2>
+
+    <img src="{% static "images/green checkmark.JPG" %}" alt="Logo" width="70" height="65" style="display: inline-list-item"/>
+        <p3>Workouts - We provide different workouts for each customer.</p3>
+
+    <footer></footer>
+    <body><h2>Calorie Tracker Formula & Arithmetic</h2>
+    The Calorie Tracker Calculator takes multiple factors into account when determining results.
+    By utilizing Mifflin-St Jeor and Harris-Benedict formulas, the Calorie Tracker Calculator can
+    accurately obtain results for body mass index and metalbolic rate(s) - amount of energy expended.</body>
+
+    <H4>Calorie Tracker For Men</H4>
+    <body>Mifflin-St Jeor Equation : 10W + 6.25H  - 5A + 5</body><br>
+    <body>Harris-Benedict Equation : 13.397W + 4.799H - 5.677A + 88.362</body>
+    <H4>Calorie Tracker For Women</H4>
+    <body>Mifflin-St Jeor Equation : 10W + 6.25H - 5A - 161</body><br>
+    <body>Harris-Benedict Equation : 9.247W + 3.098H - 4.330A + 447.593</body>
+    <body1></body1>
+    <body>** NOTE ** : <br>
+        W = Weight in kilograms (kg) <br>
+        H = Height in centimeters (cm) <br>
+        A = Age</body>
+
+    <footer></footer>
+    <h1>Why these formulas?</h1>
+    <body2>
+        The value obtained from these formulas and equations is the estimated number of calories a person can or should
+        consume in a day to maintain a healthy and nutritious body-weight, diet, and more. The value is obtained by
+        multiplying it by an activity, which depends on a individual's amount of exercise, in order to find an optimal
+        and realistic value for maintaining a healthy body-weight, diet, etc. <br>
+        <body><br></body>
+        Remember that eating properly and exercise are key and widely accepted as the best method to lose weight.
+        Calorie Tracker will not recommend or advise anyone lower their calorie intake by 1,000 calories or more a day.
+        Doing so would result in losing more than 2 pounds per week and that can be unhealthy and give the opposite effect
+        of reducing metabolism. Losing more than 2 lbs per week results in muscle loss, lower basal metabolic rate,
+        dehydration, and more. Maintaining a balance and healthy diet is crucial, the body needs to be able to support
+        the metabolic process(es) and replenish itself. Without the proper nutrients, the body can have negative long
+        term effects. Not only is monitoring calorie intake necessary, but its also important to maintain the proper
+        levels of fiber and other nutrition's to balance the bodies needs.
+    </body2>
+
+    <footer></footer>
+    <h1>Burning Calories</h1>
+    <img src="{% static "images/exercise.jpg" %}" alt="CalorieBurner" width="450" height="350" style="display: inline-list-item"/>
+    <img src="{% static "images/calburner.JPG" %}" alt="CalorieBurner" width="450" height="350" style="align-self: inherit"/>
+    <img src="{% static "images/howmany.jpg" %}" alt="CalorieBurner" width="450" height="300" style="display: inline-list-item"/>
+
+    <footer></footer>
+    <h1>Get in Touch</h1>
+        <p2>If you need to contact us for any support, please message us below</p2>
+        <form>
+           <label for="fname">First name:</label><br>
+           <input type="text" id="fname" name="fname"><br>
+           <label for="lname">Last name:</label><br>
+           <input type="text" id="lname" name="lname"><br>
+           <label for="email">Email:</label><br>
+           <input type="text" id="email" name="email"><br>
+           <label for="text box">Issue:</label><br>
+           <input type="text" id="text box" name="textBox"><br>
+           <input type="submit" value="Submit"><br>
+        </form>
+</body3>
+
+<footer>
+    <h4>Email Us!</h4>
+  <p>Authors: Noah Wagner, Corey Snavely, Zach Thornhill, Mark Kroeker</p>
+  <p><a href="mailto:ncwagner@unomaha.edu">Noah Wagner</a></p>
+  <p><a href="mailto:zthornhill@unomaha.edu">Zach Thornhill</a></p>
+  <p><a href="mailto:csnavely@unomaha.edu">Corey Snavely</a></p>
+  <p><a href="mailto:mrkroeker@unomaha.edu">Mark Kroeker</a></p>
+
+</footer>
+
+<style>
+
+/*************************************
+HEADING
+**************************************/
+
+header {
+  float: center;
+  margin: 0 0 20px 0;
+  padding: 2px 0 0 0;
+  width: 100%;
+}
+
+h1 {
+ font-family: "Palatino Linotype", Palatino, serif;
+ margin: 12px 0;
+ font-size: 2.5em;
+ font-weight: normal;
+ line-height: 0.5;
+ text-align: center;
+ color: black;
+}
+
+h2 {
+ font-family: "Palatino Linotype", Palatino, serif;
+ color: black;
+}
+
+h3 {
+ font-family: "Bookman Old Style", Palatino, serif;
+ color: black;
+ font-size: 15px;
+ position: absolute;
+}
+
+h4 {
+ font-family: "Palatino Linotype", Palatino, serif;
+ font-size: 15px;
+ color: black;
+}
+
+p1 {
+    text-align: right;
+    position: center;
+    font-family: "Bookman Old Style";
+    text-align: left;
+    display: contents;
+}
+
+p2 {
+    text-align: right;
+    position: center;
+    font-family: "Bookman Old Style";
+    text-align: left;
+    display: contents;
+    padding: 5px;
+}
+
+p3 {
+    text-align: right;
+    position: center;
+    font-family: "Bookman Old Style";
+    text-align: left;
+    display: contents;
+}
+
+/*************************************
+NAVIGATION
+**************************************/
+ nav {
+	text-align: right;
+	padding: 10px 10px;
+	margin: 20px 0 0;
+  }
+
+  nav ul  {
+    list-style: none;
+	margin: 0 20px;
+	padding: 10px;
+}
+
+nav li {
+  display: inline;
+  margin: auto;
+  padding: 10px;
+}
+
+/*************************************
+BODY
+**************************************/
+body {
+
+    text-align: center;
+    color: grey;
+    font-family: "Palatino Linotype", Palatino, serif;
+}
+
+body1 {
+    padding: 50px;
+    display: block;
+}
+
+body2 {
+    padding: 50px;
+    border: black;
+    width: 750px;
+    height: 350px;
+    text-align: center;
+}
+
+body3 {
+    padding: 50px;
+    color: black;
+    display: block;
+    font-family: "Palatino Linotype", Palatino, serif;
+    text-align: center;
+}
+
+a {
+    color: black;
+    background-color: transparent;
+}
+
+/*************************************
+HEADINGS
+**************************************/
+
+h1 {
+    color: black;
+    display: block;
+    padding: 50px;
+}
+
+h2 {
+    color: gray;
+    display: block;
+}
+
+nav {
+    background: lightgray;
+    color: black;
+}
+
+div {
+    display: contents;
+    background-color: transparent;
+}
+
+image {
+    border-radius: 15px;
+    display: block;
+}
+
+/*************************************
+FOOTER
+**************************************/
+ footer {
+ font-size: 0.75em;
+ text-align: center;
+ clear: both;
+ padding-top: 200px;
+ color: #ccc;
+ }
+
+</style>
+</html>

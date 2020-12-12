@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<body>
+
+    <img class="pic" src="{% static "images/logo.JPG" %}" alt="Logo" width="180" height="180"/>
+    <img class="pic2" src="{% static "images/logo.JPG" %}" alt="Logo" width="180" height="180"/>
+
+{% block content %}
+<h2>Log In</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success ml-2" type="submit">Log In</button>
+</form>
+{% endblock content %}
+
+
+</body>
+
+<style>
+
+    body {
+    text-align: center;
+    color: grey;
+    font-family: "Palatino Linotype", Palatino, serif;
+    }
+
+    .pic {
+    position:fixed;
+	top:0;
+	left:0;
+    }
+
+    .pic2 {
+    position:fixed;
+	top:0px;
+	right:0px;
+    }
+
+
+    h2 {
+        font-size: 50px;
+        color: black;
+    }
+
+    input{
+        padding: 6px;
+        font-size: 15px;
+        width: 220px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    label{
+        width: 240px;
+        display: inline-block;
+        color: gray ;
+        font-weight: bold;
+    }
+
+    textarea {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    button{
+        width: 200px;
+        height: 50px;
+        margin-top: 50px;
+        background-color: white;
+    }
+
+
+
+</style>
+
+
+</html>
